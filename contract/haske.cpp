@@ -4,17 +4,17 @@
  @event EOS - Africa Virtual Hackathon (OCTOBER 15-18, 2018)
 
 
- ****This contract facilitates complete decentralized lending on EOSIO****
+ ****THIS CONTRACT FACILITATES COMPLETE DECENTRALIZED LENDING ON EOSIO****
 
- -borrowers register with biometric data and may put a collateral on the blockchain,
+ borrowers register with biometric data and may put a collateral on the blockchain,
 
- -lenders decide which collaterals the credit scoring of the borrowers accounts they can work with and
+ lenders decide which collaterals the credit scoring of the borrowers accounts they can work with and,
 
- -loans are issued and paid via token : Haske Token (HSK)
+ loans are issued and paid via token : Haske Token (HSK),
 
- -lending duration expiration has collaterals automatically transfered to lenders
+ lending duration expiration has collaterals automatically transfered to lenders,
 
- - a credit scoring algorithm for borrowers
+ a credit scoring algorithm for borrowers
  */
 
 #include <eosiolib/time.hpp>
