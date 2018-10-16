@@ -139,8 +139,8 @@ public:
     auto iterator = transacts.find( lend_id );
     eosio_assert(iterator != transacts.end(), "This transaction does not exist");
     eosio_assert(iterator->borrowing_account != borrower, "This account is not authorized to carry out this transaction");
-    eosio_assert( haske_token.amount > iterator->haske_token.amount, "Insufficient Haske tokens to pay back the loan");
-    eosio_assert(iterator->lend_default == 1, "This collateral has been transfered to the lender");
+    eosio_assert(haske_token.amount > iterator->haske_token.amount, "Insufficient Haske tokens to pay back the loan");
+    eosio_assert(iterator->lend_default != 0 , "This collateral has been transfered to the lender");
 
     //Update transact table: set status = 1 and lend_default = 1
     if(eosio::time_point_sec(now()) > eosio::time_point_sec(iterator->duration) && iterator->lending_grace == 0)
@@ -176,7 +176,7 @@ public:
 
     auto iterator = transacts.find( lend_id );
     eosio_assert(iterator != transacts.end(), "This transaction does not exist");
-    eosio_assert(iterator->lend_default == 0,"Cannot return a non-defaulting loan");
+    eosio_assert(iterator->lend_default != 0,"Cannot return a non-defaulting loan");
     eosio_assert(iterator->lending_account != lender, "This account is not authorized to carry out this transaction");
 
 
@@ -407,7 +407,7 @@ private:
      uint64_t primary_key()const { return supply.symbol.name(); }
   };
 
- //typedef decalaration for accounts and currency_stats 
+ //typedef decalaration for accounts and currency_stats
   typedef eosio::multi_index<N(accounts), account> accounts;
   typedef eosio::multi_index<N(stat), currency_stats> stats;
 
