@@ -4,7 +4,7 @@
  @event EOS - Africa Virtual Hackathon (OCTOBER 15-18, 2018)
 
 
- ****This contract facilitates complete decentralized lending****
+ ****This contract facilitates complete decentralized lending on EOSIO****
 
  -borrowers register with biometric data and may put a collateral on the blockchain,
 
