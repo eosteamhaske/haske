@@ -6,11 +6,15 @@
 
  ****This contract facilitates complete decentralized lending****
 
- -borrowers register and put a collateral on the blockchain,
- -lenders decide which collaterals they are okay with,
- -lending duration expiration has collaterals automatically transfered to lenders
- -an automated credit scoring for borrowers
+ -borrowers register with biometric data and may put a collateral on the blockchain,
+
+ -lenders decide which collaterals the credit scoring of the borrowers accounts they can work with and
+
  -loans are issued and paid via token : Haske Token (HSK)
+
+ -lending duration expiration has collaterals automatically transfered to lenders
+
+ - a credit scoring algorithm for borrowers
  */
 
 #include <eosiolib/time.hpp>
