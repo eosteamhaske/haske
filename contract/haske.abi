@@ -1,0 +1,322 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Tue Oct 16 22:02:19 2018",
+    "version": "eosio::abi/1.0",
+    "structs": [
+        {
+            "name": "account",
+            "base": "",
+            "fields": [
+                {
+                    "name": "balance",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "collateral",
+            "base": "",
+            "fields": [
+                {
+                    "name": "borrower",
+                    "type": "name"
+                },
+                {
+                    "name": "description",
+                    "type": "string"
+                },
+                {
+                    "name": "asset_type",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "creditscore",
+            "base": "",
+            "fields": [
+                {
+                    "name": "borrower",
+                    "type": "name"
+                },
+                {
+                    "name": "sentinel",
+                    "type": "float64"
+                }
+            ]
+        },
+        {
+            "name": "currency_stats",
+            "base": "",
+            "fields": [
+                {
+                    "name": "supply",
+                    "type": "asset"
+                },
+                {
+                    "name": "max_supply",
+                    "type": "asset"
+                },
+                {
+                    "name": "issuer",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "lend",
+            "base": "",
+            "fields": [
+                {
+                    "name": "lender",
+                    "type": "name"
+                },
+                {
+                    "name": "borrower",
+                    "type": "name"
+                },
+                {
+                    "name": "haske_token",
+                    "type": "asset"
+                },
+                {
+                    "name": "_duration_in_minutes",
+                    "type": "uint64"
+                },
+                {
+                    "name": "lend_id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "notify",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "msg",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "payback",
+            "base": "",
+            "fields": [
+                {
+                    "name": "borrower",
+                    "type": "name"
+                },
+                {
+                    "name": "lend_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "haske_token",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "registry",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "first_name",
+                    "type": "string"
+                },
+                {
+                    "name": "last_name",
+                    "type": "string"
+                },
+                {
+                    "name": "country",
+                    "type": "string"
+                },
+                {
+                    "name": "mobile",
+                    "type": "string"
+                },
+                {
+                    "name": "biometrics",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "release",
+            "base": "",
+            "fields": [
+                {
+                    "name": "lender",
+                    "type": "name"
+                },
+                {
+                    "name": "lend_id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "transact",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "borrowing_account",
+                    "type": "name"
+                },
+                {
+                    "name": "lending_account",
+                    "type": "name"
+                },
+                {
+                    "name": "asset_type",
+                    "type": "string"
+                },
+                {
+                    "name": "haske_token",
+                    "type": "asset"
+                },
+                {
+                    "name": "status",
+                    "type": "_Bool"
+                },
+                {
+                    "name": "lend_default",
+                    "type": "_Bool"
+                },
+                {
+                    "name": "lending_grace",
+                    "type": "_Bool"
+                },
+                {
+                    "name": "duration",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "time_confirmed",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "description",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "user",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "first_name",
+                    "type": "string"
+                },
+                {
+                    "name": "last_name",
+                    "type": "string"
+                },
+                {
+                    "name": "country",
+                    "type": "string"
+                },
+                {
+                    "name": "mobile",
+                    "type": "string"
+                },
+                {
+                    "name": "biometrics",
+                    "type": "string"
+                },
+                {
+                    "name": "credit_score",
+                    "type": "uint64"
+                }
+            ]
+        }
+    ],
+    "types": [],
+    "actions": [
+        {
+            "name": "collateral",
+            "type": "collateral",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "creditscore",
+            "type": "creditscore",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "lend",
+            "type": "lend",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "notify",
+            "type": "notify",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "payback",
+            "type": "payback",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "registry",
+            "type": "registry",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "release",
+            "type": "release",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "accounts",
+            "type": "account",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "stat",
+            "type": "currency_stats",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "transact",
+            "type": "transact",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "user",
+            "type": "user",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "abi_extensions": []
+}
