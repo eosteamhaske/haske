@@ -8,7 +8,7 @@
 
  borrowers register with biometric data and may put a collateral on the blockchain,
 
- lenders decide which collaterals the credit scoring of the borrowers accounts they can work with and,
+ lenders decide which collaterals the credit scoring of the borrowers accounts they can lend to,
 
  loans are issued and paid via token : Haske Token (HSK),
 
