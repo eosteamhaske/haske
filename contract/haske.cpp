@@ -19,7 +19,6 @@
 #include <eosiolib/asset.hpp>
 #include <eosiolib/eosio.hpp>
 #include <eosiolib/print.hpp>
-// #include "eosio.token.hpp"
 
 using namespace eosio;
 
@@ -300,7 +299,24 @@ public:
   require_recipient(user);
  }
 
+  //Get total supply of Haske-tokens in the system
+  asset get_supply( symbol_name sym )const
+  {
+     stats statstable( _self, sym );
+     const auto& st = statstable.get( sym );
+     return st.supply;
+  }
+
+  //Get balance of Haske-tokens for an account
+  asset get_balance( account_name owner, symbol_name sym )const
+  {
+     accounts accountstable( _self, owner );
+     const auto& ac = accountstable.get( sym );
+     return ac.balance;
+  }
+
 private:
+
 
   //Safety implementations to subtract haske-tokens from the of an balance account
   void sub_balance( account_name owner, asset value ) {
