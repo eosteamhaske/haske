@@ -9,8 +9,8 @@ export default () => (
     <div className="card mobile">
       <CardBar />
       <div className="home row ">
-        <Button to="/register" btnText="Sign up" />{" "}
-        <Button to="/apply" btnText="Apply For Loan" />
+        <Button to="/register" btnText="Borrow" />{" "}
+        <Button to="/apply" btnText="Lend" />
       </div>
     </div>
   </div>

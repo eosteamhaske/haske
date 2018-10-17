@@ -4,17 +4,21 @@
  @event EOS - Africa Virtual Hackathon (OCTOBER 15-18, 2018)
 
 
- ****THIS CONTRACT FACILITATES COMPLETE DECENTRALIZED LENDING ON EOSIO****
+ ****This contract facilitates decentralized lending with its token economics****
 
- borrowers register with biometric data and may put a collateral on the blockchain,
+ -users register perosonal data with biometrics
 
- lenders decide which collaterals the credit scoring of the borrowers accounts they can lend to,
+ -users: borrowers may put a collateral on the blockchain and or a guarantor for the borrowers project
 
- loans are issued and paid via token : Haske Token (HSK),
+ -users: lenders decide which collaterals they are okay with and send eos to the contract
+         and receive a fungible token : Credit Note Token (CNT)
 
- lending duration expiration has collaterals automatically transfered to lenders,
+ -loans are issued and returned through a token: Haske Token (HSK)
 
- a credit scoring algorithm for borrowers
+ -lending duration expiration has collaterals automatically transfered to lender
+
+ -automated credit scoring for borrowing accounts : up-score or down-score
+
  */
 
 #include <eosiolib/time.hpp>
@@ -103,10 +107,10 @@ public:
   }
 
   /*
-   This action matches a lending account to a borrowing account based on the lenders review
+   This action matches a lending account to a borrowing account
   */
   [[eosio::action]]
-  void lend(account_name lender, account_name borrower, asset haske_token, uint64_t _duration_in_minutes, uint64_t lend_id) {
+  void lend(account_name lender, account_name borrower, asset haske_token,asset credit_token ,asset eos_amount, uint64_t _duration_in_minutes, uint64_t lend_id) {
     //Requires authentication from the lenders account
     require_auth( lender );
 
@@ -124,11 +128,19 @@ public:
        lending.haske_token = haske_token;
        lending.duration = eosio::time_point_sec(_duration_in_minutes * 60);
        lending.time_confirmed = eosio::time_point_sec(now());
+       lending.eos_locked = eos_amount;
       });
 
-      //transfer lend amount to borrower in Haske-tokens
-      transfer(lender, borrower, haske_token,"transfer successfull");
-      info(lender, ", lend successfull");
+      //transfer eos to contract from lender
+      transfer(lender, _self,eos_amount ,"eos transfered to contract");
+
+      //issue Haske-tokens to borrower
+      issue(borrower,haske_token,"Haske tokens issued");
+
+      //issue Credit-note tokens to lender
+      issue(lender,credit_token,"Credit note tokens issued");
+
+      info(lender, ", lend process completed");
   }
 
   /*
@@ -155,9 +167,16 @@ public:
       info(borrower, ",This collateral has been transfered to the lender");
       creditscore(borrower);
     }else{
-      //transfer lend amount back to lender in Haske-tokens
 
-      transfer(iterator->borrowing_account, iterator->lending_account, iterator->haske_token,"Loan paid");
+      //transfer lend amount back to contract in Haske-tokens
+      transfer(iterator->borrowing_account, _self, iterator->eos_locked,"Loan paid");
+
+      //Burn Credit-note tokens issued
+      burn(iterator->lending_account, iterator->credit_token, "Burn Credit Note token");
+
+      //transfer eos from contract to lender
+      transfer(_self, iterator->lending_account,iterator->eos_locked ,"eos transfered to contract");
+
       creditscore(borrower, 0.616);
 
       transacts.modify(iterator, borrower, [&]( auto& borrowing ) {
@@ -206,8 +225,9 @@ public:
     });
   }
 
+
   /*
-   Create haske-tokens and determine the maximum supply
+   Create tokens and determine the maximum supply
   */
   void create( account_name issuer, asset maximum_supply )
   {
@@ -230,7 +250,7 @@ public:
   }
 
   /*
-   Issue haske-tokens to an account
+   Issue tokens to an account
   */
    void issue( account_name to, asset quantity, std::string memo )
   {
@@ -266,7 +286,43 @@ public:
   }
 
   /*
-  transfer haske-tokens between two accounts
+   Burn tokens of an account
+  */
+  void burn( account_name to, asset quantity, std::string memo )
+ {
+     //Only this contract may issue tokens
+     require_auth(_self);
+
+     auto sym = quantity.symbol;
+     eosio_assert( sym.is_valid(), "invalid symbol name" );
+     eosio_assert( memo.size() <= 256, "memo has more than 256 bytes" );
+
+     auto sym_name = sym.name();
+     stats statstable( _self, sym_name );
+     auto existing = statstable.find( sym_name );
+     eosio_assert( existing != statstable.end(), "token with symbol does not exist, create token before burning" );
+     const auto& st = *existing;
+
+     require_auth( st.issuer );
+     eosio_assert( quantity.is_valid(), "invalid quantity" );
+     eosio_assert( quantity.amount > 0, "must burn positive quantity" );
+
+     eosio_assert( quantity.symbol == st.supply.symbol, "symbol precision mismatch" );
+     eosio_assert( quantity.amount <= st.max_supply.amount - st.supply.amount, "quantity exceeds available supply");
+
+     statstable.modify( st, 0, [&]( auto& s ) {
+        s.supply -= quantity;
+     });
+
+     sub_balance( st.issuer, quantity );
+
+     if( to != st.issuer ) {
+        SEND_INLINE_ACTION( *this, transfer, {st.issuer,N(active)}, {st.issuer, to, quantity, memo} );
+     }
+ }
+
+  /*
+  transfer tokens between two accounts
   */
   void transfer( account_name from, account_name to, asset quantity, std::string  memo)
   {
@@ -317,8 +373,6 @@ public:
   }
 
 private:
-
-
   //Safety implementations to subtract haske-tokens from the balance of an account
   void sub_balance( account_name owner, asset value ) {
      accounts from_acnts( _self, owner );
@@ -371,6 +425,8 @@ private:
     std::string  mobile;
     std::string  biometrics;
     uint64_t     credit_score;
+    asset        credit_token;
+    asset        haske_token;
 
     uint64_t primary_key() const { return account; }
     EOSLIB_SERIALIZE(user, (account)(first_name)(last_name)(country)(mobile)(credit_score))
@@ -383,6 +439,8 @@ private:
     account_name             lending_account;
     std::string              asset_type;
     asset                    haske_token;
+    asset                    credit_token;
+    asset                    eos_locked;
     bool                     status = 0;
     bool                     lend_default = 0;
     bool                     lending_grace = 0;

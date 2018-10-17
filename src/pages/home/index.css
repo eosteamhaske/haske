@@ -22,7 +22,7 @@
 .card {
     height: 450px;
     width: 350px;
-    background-color: #07234f;
+    background-color: white;
 }
 
 .home {
@@ -55,6 +55,7 @@
     width: 120px;
     border-radius: 2px;
     border: 0px;
+    color:
 }
 
 .home :nth-child(1) {

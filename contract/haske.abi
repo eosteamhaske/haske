@@ -1,5 +1,5 @@
 {
-    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Tue Oct 16 22:02:19 2018",
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Wed Oct 17 21:49:32 2018",
     "version": "eosio::abi/1.0",
     "structs": [
         {
@@ -76,6 +76,14 @@
                 },
                 {
                     "name": "haske_token",
+                    "type": "asset"
+                },
+                {
+                    "name": "credit_token",
+                    "type": "asset"
+                },
+                {
+                    "name": "eos_amount",
                     "type": "asset"
                 },
                 {
@@ -189,6 +197,14 @@
                     "type": "asset"
                 },
                 {
+                    "name": "credit_token",
+                    "type": "asset"
+                },
+                {
+                    "name": "eos_locked",
+                    "type": "asset"
+                },
+                {
                     "name": "status",
                     "type": "_Bool"
                 },
@@ -245,6 +261,14 @@
                 {
                     "name": "credit_score",
                     "type": "uint64"
+                },
+                {
+                    "name": "credit_token",
+                    "type": "asset"
+                },
+                {
+                    "name": "haske_token",
+                    "type": "asset"
                 }
             ]
         }
