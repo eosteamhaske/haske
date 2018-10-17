@@ -300,12 +300,12 @@ public:
      auto sym_name = sym.name();
      stats statstable( _self, sym_name );
      auto existing = statstable.find( sym_name );
-     eosio_assert( existing != statstable.end(), "token with symbol does not exist, create token before issue" );
+     eosio_assert( existing != statstable.end(), "token with symbol does not exist, create token before burning" );
      const auto& st = *existing;
 
      require_auth( st.issuer );
      eosio_assert( quantity.is_valid(), "invalid quantity" );
-     eosio_assert( quantity.amount > 0, "must issue positive quantity" );
+     eosio_assert( quantity.amount > 0, "must burn positive quantity" );
 
      eosio_assert( quantity.symbol == st.supply.symbol, "symbol precision mismatch" );
      eosio_assert( quantity.amount <= st.max_supply.amount - st.supply.amount, "quantity exceeds available supply");
