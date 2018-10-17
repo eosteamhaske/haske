@@ -1,0 +1,48 @@
+.landing-page {
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url('../../components/images/h1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}
+
+.lp-nav-bar {
+    width: 200px;
+    height: 50px;
+    margin: 2em 2em 0em auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.lp-nav-bar button {
+    height: 30px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    width: 80px;
+    border-radius: 2px;
+    font-weight: 700;
+}
+
+
+.lp-text {
+    font-size: 2em;
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    margin-top: -100px;
+}
+
+.lp-text :nth-child(1) {
+    font-size: 2em;
+    margin-right: 1px;
+}

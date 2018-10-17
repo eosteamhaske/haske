@@ -22,6 +22,10 @@ export default () => (
             <label>Mobile Number</label>
             <input placeholder="e.g 234812345690" />
           </Form.Field>
+          <Form.Field>
+            <label>Biometrics</label>
+            <input placeholder="------------" />
+          </Form.Field>
           <Button type="submit">Submit</Button>
         </Form>
       </div>
