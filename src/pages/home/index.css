@@ -1,0 +1,65 @@
+.haske-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row {
+    width: 100%;
+}
+
+.card {
+    height: 450px;
+    width: 350px;
+    background-color: #e7eaed;
+}
+
+.home {
+    margin-top: 140px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 450px) {
+    .haske-container {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100vh;
+        width: 100%;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: 3px;
+    }
+    .card {
+        height: 450px;
+        width: 350px;
+        background-color: inherit;
+    }
+}
+
+.home button {
+    height: 40px;
+    width: 120px;
+    border-radius: 2px;
+    border: 0px;
+}
+
+.home :nth-child(1) {
+    background-color: white;
+    border: 1px solid black;
+}
+
+.home :nth-child(2) {
+    background-color: #1db26e;
+    color: white;
+}
