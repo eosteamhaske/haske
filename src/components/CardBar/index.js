@@ -12,7 +12,7 @@ const styles = {
 export default () => (
   <div className="flex-container card-bar row">
     <Link className='a-link' to='/'><div>Haske</div></Link>
-    <Dropdown simple text="Balances">
+    <Dropdown simple text="EOS6MRy...">
       <Dropdown.Menu>
       <Dropdown.Item style={styles.item}>
       <Link className='a-link bal' to='/credit-history'><div>2 HSK</div></Link>
