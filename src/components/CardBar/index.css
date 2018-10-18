@@ -20,3 +20,9 @@
 .card-bar :nth-child(3) {
   font-size: 0.7em;
 }
+
+.bal {
+  color: black;
+  font-size: 4px;
+
+}
