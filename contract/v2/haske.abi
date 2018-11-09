@@ -1,0 +1,251 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Fri Nov  9 08:18:49 2018",
+    "version": "eosio::abi/1.0",
+    "structs": [
+        {
+            "name": "collateral",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "collateral_name",
+                    "type": "string"
+                },
+                {
+                    "name": "description",
+                    "type": "string"
+                },
+                {
+                    "name": "ipfs_path",
+                    "type": "string"
+                },
+                {
+                    "name": "guarantors",
+                    "type": "name[]"
+                },
+                {
+                    "name": "is_guaranteed",
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "fund",
+            "base": "",
+            "fields": [
+                {
+                    "name": "lender",
+                    "type": "name"
+                },
+                {
+                    "name": "borrower",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "lendable_id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "guarantee",
+            "base": "",
+            "fields": [
+                {
+                    "name": "guarantor",
+                    "type": "name"
+                },
+                {
+                    "name": "collateral_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "level_od_confidence",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "lendable",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "placecollat",
+            "base": "",
+            "fields": [
+                {
+                    "name": "borrower",
+                    "type": "name"
+                },
+                {
+                    "name": "collateral_name",
+                    "type": "string"
+                },
+                {
+                    "name": "collateral_description",
+                    "type": "string"
+                },
+                {
+                    "name": "ipfs_collateral_url",
+                    "type": "string"
+                },
+                {
+                    "name": "guarantors",
+                    "type": "name[]"
+                }
+            ]
+        },
+        {
+            "name": "placelendable",
+            "base": "",
+            "fields": [
+                {
+                    "name": "lender",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "terms",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "reguser",
+            "base": "",
+            "fields": [
+                {
+                    "name": "uesername",
+                    "type": "name"
+                },
+                {
+                    "name": "first_name",
+                    "type": "string"
+                },
+                {
+                    "name": "last_name",
+                    "type": "string"
+                },
+                {
+                    "name": "country",
+                    "type": "string"
+                },
+                {
+                    "name": "mobile",
+                    "type": "string"
+                },
+                {
+                    "name": "biometrics",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "user",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "uesername",
+                    "type": "name"
+                },
+                {
+                    "name": "first_name",
+                    "type": "string"
+                },
+                {
+                    "name": "last_name",
+                    "type": "string"
+                },
+                {
+                    "name": "country",
+                    "type": "string"
+                },
+                {
+                    "name": "mobile",
+                    "type": "string"
+                },
+                {
+                    "name": "biometrics",
+                    "type": "string"
+                }
+            ]
+        }
+    ],
+    "types": [],
+    "actions": [
+        {
+            "name": "fund",
+            "type": "fund",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "guarantee",
+            "type": "guarantee",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "placecollat",
+            "type": "placecollat",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "placelendable",
+            "type": "placelendable",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "reguser",
+            "type": "reguser",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "collaterals",
+            "type": "collateral",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "lendables",
+            "type": "lendable",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "users",
+            "type": "user",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "abi_extensions": []
+}
