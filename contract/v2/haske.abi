@@ -1,7 +1,51 @@
 {
-    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Fri Nov  9 08:18:49 2018",
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Sun Nov 11 15:17:59 2018",
     "version": "eosio::abi/1.0",
     "structs": [
+        {
+            "name": "addagent",
+            "base": "",
+            "fields": [
+                {
+                    "name": "agent",
+                    "type": "name"
+                },
+                {
+                    "name": "officialname",
+                    "type": "string"
+                },
+                {
+                    "name": "address",
+                    "type": "string"
+                },
+                {
+                    "name": "telephone",
+                    "type": "string"
+                },
+                {
+                    "name": "email",
+                    "type": "string"
+                },
+                {
+                    "name": "country",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "blacklist",
+            "base": "",
+            "fields": [
+                {
+                    "name": "authority",
+                    "type": "name"
+                },
+                {
+                    "name": "accounts",
+                    "type": "name[]"
+                }
+            ]
+        },
         {
             "name": "collateral",
             "base": "",
@@ -77,12 +121,72 @@
             ]
         },
         {
+            "name": "kyc",
+            "base": "",
+            "fields": [
+                {
+                    "name": "agent",
+                    "type": "name"
+                },
+                {
+                    "name": "user",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "kyc_agent",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "agentname",
+                    "type": "name"
+                },
+                {
+                    "name": "officialname",
+                    "type": "string"
+                },
+                {
+                    "name": "address",
+                    "type": "string"
+                },
+                {
+                    "name": "telephone",
+                    "type": "string"
+                },
+                {
+                    "name": "email",
+                    "type": "string"
+                },
+                {
+                    "name": "country",
+                    "type": "string"
+                }
+            ]
+        },
+        {
             "name": "lendable",
             "base": "",
             "fields": [
                 {
                     "name": "id",
                     "type": "uint64"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "lender",
+                    "type": "name"
+                },
+                {
+                    "name": "terms",
+                    "type": "string"
                 }
             ]
         },
@@ -135,7 +239,7 @@
             "base": "",
             "fields": [
                 {
-                    "name": "uesername",
+                    "name": "username",
                     "type": "name"
                 },
                 {
@@ -152,10 +256,6 @@
                 },
                 {
                     "name": "mobile",
-                    "type": "string"
-                },
-                {
-                    "name": "biometrics",
                     "type": "string"
                 }
             ]
@@ -169,7 +269,7 @@
                     "type": "uint64"
                 },
                 {
-                    "name": "uesername",
+                    "name": "username",
                     "type": "name"
                 },
                 {
@@ -189,14 +289,32 @@
                     "type": "string"
                 },
                 {
-                    "name": "biometrics",
+                    "name": "ipfs_identity",
                     "type": "string"
+                },
+                {
+                    "name": "is_kycd",
+                    "type": "bool"
+                },
+                {
+                    "name": "kyc_agent",
+                    "type": "name"
                 }
             ]
         }
     ],
     "types": [],
     "actions": [
+        {
+            "name": "addagent",
+            "type": "addagent",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "blacklist",
+            "type": "blacklist",
+            "ricardian_contract": ""
+        },
         {
             "name": "fund",
             "type": "fund",
@@ -205,6 +323,11 @@
         {
             "name": "guarantee",
             "type": "guarantee",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "kyc",
+            "type": "kyc",
             "ricardian_contract": ""
         },
         {
@@ -224,6 +347,13 @@
         }
     ],
     "tables": [
+        {
+            "name": "agents",
+            "type": "kyc_agent",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
         {
             "name": "collaterals",
             "type": "collateral",
