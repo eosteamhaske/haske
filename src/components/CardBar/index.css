@@ -1,0 +1,28 @@
+.card-bar {
+  background-color: black;
+  color: white;
+  justify-content: space-between;
+  padding: 0px 15px 0px 15px;
+  align-items: center;
+  height: 40px;
+}
+
+.card-bar :nth-child(1) {
+  font-size: 1.5em;
+}
+
+.a-link {
+  text-decoration: none;
+  color: white;
+}
+
+.card-bar :nth-child(2),
+.card-bar :nth-child(3) {
+  font-size: 0.7em;
+}
+
+.bal {
+  color: black;
+  font-size: 4px;
+
+}
